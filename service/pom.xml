@@ -92,17 +92,26 @@
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
+					<groups>com.qvc.payment.example.UnitTest</groups>
 					<failIfNoTests>true</failIfNoTests>
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<!-- <configuration> <includes> <include>**/*RestIT</include> <include>**/RestITCase</include> 
-					</includes> </configuration> -->
+				<configuration>
+					<groups>com.qvc.payment.example.IntegrationTest</groups>
+				</configuration>
 				<executions>
 					<execution>
+						<id>integration-test</id>
 						<goals>
 							<goal>integration-test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
 							<goal>verify</goal>
 						</goals>
 					</execution>
